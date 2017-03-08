@@ -14,8 +14,9 @@ public class Table {
 	}
 	
 	public Table AddPlayerToTable(Player p)
-	{
-		//TODO: Add a player to the table (should be pretty easy)		
-		return this;
+	{	
+		TablePlayers.add(p);
+		
+		return this; 
 	}
 }

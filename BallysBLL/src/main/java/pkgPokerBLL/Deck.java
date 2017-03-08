@@ -1,11 +1,13 @@
 package pkgPokerBLL;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.UUID;
 
 import pkgPokerEnum.eRank;
+import pkgPokerEnum.eSuit;
 
-public class Deck {
+public class Deck { 
 
 	private UUID DeckID;
 	private ArrayList<Card> DeckCards = new ArrayList<Card>();
@@ -16,14 +18,21 @@ public class Deck {
 		
 		//	This method will do a for/each, returning each rank in the enum.
 		for (eRank Rank : eRank.values()) {
-			System.out.println(Rank.getiRankNbr());
+			for (eSuit Suit: eSuit.values()){
+				if (Suit != eSuit.JOKER && Rank != eRank.JOKER) {
+				//	System.out.println(Rank + " " + Suit)
+					Card c = new Card(Rank, Suit);
+					DeckCards.add(c);
+				}
+			}
+		Collections.shuffle(DeckCards);
 		}
 	}
 	
 	public Card DrawCard()
 	{
-		//	TODO: Implement this method... should draw a card from the deck.
+	
 		
-		return null;
+		return DeckCards.remove(0);
 	}
 }
